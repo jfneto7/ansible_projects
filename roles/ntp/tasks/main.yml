@@ -1,0 +1,22 @@
+---
+# created by J.F. Neto for test purposes (TEST env)
+
+- name: Ensure ntp is installed
+  zypper: name=ntp state=present
+  notify: Start ntp
+  when: "ansible_distribution_major_version == '11' or ansible_distribution_major_version == '12'"
+
+- name: Ensure chrony is installed
+  zypper: name=chrony state=present
+  notify: Start chrony
+  when: "ansible_distribution_major_version == '15'"
+
+- name: NTP configuration
+  copy: src=ntp.conf dest=/tmp/ntp.conf
+  when: "ansible_distribution_major_version == '11' or ansible_distribution_major_version == '12'"
+
+- name: Chrony configuration
+  copy: src=chrony.conf dest=/tmp/chrony.conf
+  when: "ansible_distribution_major_version == '15'"
+
+...

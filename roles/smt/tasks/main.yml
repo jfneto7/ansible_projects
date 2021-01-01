@@ -1,0 +1,28 @@
+---
+# created by J.F. Neto for test purposes (TEST env)
+
+- name: SMT for SLES 12 and 15
+  shell: /usr/sbin/ppc64_cpu --smt| cut -d '=' -f2
+  register: smtvalue
+- debug:
+    msg: "{{ smtvalue.stdout }}"
+
+- name: Fixing SMT SLES12
+  shell: /usr/sbin/ppc64_cpu --smt=4
+  args:
+    warn: false
+  when: "ansible_distribution_major_version != '15' and smtvalue.stdout != '4'"
+
+- name: Fixing SMT SLES15
+  shell: /usr/sbin/ppc64_cpu --smt=8
+  args:
+    warn: false
+  when: "ansible_distribution_major_version == '15' and smtvalue.stdout != '8'"
+
+- name: New value of SMT
+  shell: /usr/sbin/ppc64_cpu --smt
+  register: smtvalue
+- debug:
+    msg: "{{ smtvalue.stdout }}"
+
+...
