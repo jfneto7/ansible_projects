@@ -1,0 +1,5 @@
+- name:  Test playbook created by J.F.Neto for test purposes
+  hosts: hwcct
+  roles:
+   - ntp
+   - smt
