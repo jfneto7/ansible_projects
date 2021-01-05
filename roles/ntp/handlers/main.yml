@@ -1,0 +1,11 @@
+---
+# handlers file for ntp and chrony
+
+- name: Start ntp
+  systemd: state=started enabled=yes daemon_reload=no name=ntp
+
+- name: Start chrony
+  systemd: state=started enabled=yes daemon_reload=no name=chrony
+
+
+...
