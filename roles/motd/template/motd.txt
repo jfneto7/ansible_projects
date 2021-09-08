@@ -1,0 +1,10 @@
+     .-.        Robert Bosch GmbH
+    '_8_'       Server Services IBM AIX (CI/OSB5)
+   .| |o|.      zg68fe@de.bosch.com
+   ||___||      FQDN: {{ ansible_fqdn }}
+   |J   L|      Location: | Network-Layer: BCN | SMT CI-ID:
+
+Unix User Wiki: https://inside-docupedia.bosch.com/confluence/display/UNIXUSER/Unix+User+Wiki
+
+ IP Address: {{ ansible_default_ipv4.address }}
+ Location:

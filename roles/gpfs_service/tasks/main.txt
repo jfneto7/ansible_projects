@@ -1,0 +1,8 @@
+---
+- name: Checking GPFS service status
+  shell: /usr/lpp/mmfs/bin/mmgetstate
+  register: gpfs_status
+
+- debug:
+    msg: "{{ gpfs_status.stdout }}"
+

@@ -1,0 +1,12 @@
+---
+# tasks file for motd
+- name: Copying MOTD file
+  template: src=motd dest=/tmp/motd force=yes owner=root group=root
+
+- name: Setting location in motd - Si
+  replace: "dest=/tmp/motd regexp='Location:' replace='Location: EMEA-DE-Si'"
+  when: ansible_default_ipv4.network | ipaddr('10.49.8.0')
+
+- name: Setting location in motd - Fe
+  replace: "dest=/tmp/motd regexp='Location:' replace='Location: EMEA-DE-Fe'"
+  when: ansible_default_ipv4.network | ipaddr('10.49.16.0')

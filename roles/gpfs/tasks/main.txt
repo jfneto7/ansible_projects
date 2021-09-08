@@ -1,0 +1,15 @@
+---
+
+- name: GPFS packages installation
+  shell: /usr/bin/zypper --quiet --no-gpg install --auto-agree-with-licenses --no-confirm "{{ item }}"
+  when: "ansible_kernel == '4.12.14-95.71-default'"
+
+  with_items:
+    - /repo/gpfs/504-4le/gpfs_rpms/gpfs.base-5.0.4-4.ppc64le.rpm
+    - /repo/gpfs/504-4le/gpfs_rpms/gpfs.docs-5.0.4-4.noarch.rpm
+    - /repo/gpfs/504-4le/gpfs_rpms/gpfs.gplbin-4.12.14-95.71-default-5.0.4-4.ppc64le.rpm
+    - /repo/gpfs/504-4le/gpfs_rpms/gpfs.gskit-8.0.50-86.ppc64le.rpm
+    - /repo/gpfs/504-4le/gpfs_rpms/gpfs.license.std-5.0.4-4.ppc64le.rpm
+    - /repo/gpfs/504-4le/gpfs_rpms/gpfs.msg.en_US-5.0.4-4.noarch.rpm
+    - /repo/gpfs/504-4le/gpfs_rpms/gpfs.gss.pmsensors-5.0.4-4.sles12.1.ppc64le.rpm
+    - /repo/gpfs/504-4le/gpfs_rpms/gpfs.gpl-5.0.4-4.noarch.rpm
